@@ -1,50 +1,8 @@
-const allPlanetsEndpoint = 'https://swapi.dev/api/planets';
+import { getAllPlanets } from "./data-helpers.js";
+import { createButton } from "./dom-helpers.js";
 
-export async function getAllPlanets() {
-  let cachedPlanets = getCachedData('planets');
+const allPlanets = await getAllPlanets();
 
-  if (cachedPlanets == null) {
-    cachedPlanets = await fetchAndCachePlanets();
-  }
-
-  return cachedPlanets;
-};
-
-const fetchData = async (url) => {
-  try {
-    const res = await fetch(url);
-
-    if (res.ok) return await res.json();
-
-    throw new Error(`Error fetching data: status ${res.status}`);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const fetchAndCachePlanets = async () => {
-  let url = allPlanetsEndpoint;
-  let allPlanets = [];
-
-  while (url) {
-    const data = await fetchData(url);
-
-    allPlanets.push(...data.results);
-
-    url = data.next;
-  }
-
-  cacheData('planets', allPlanets);
-
-  return allPlanets;
-};
-
-function getCachedData(key) {
-  return JSON.parse(sessionStorage.getItem(key));
-};
-
-function cacheData(key, data) {
-  sessionStorage.setItem(key, JSON.stringify(data));
-};
-
-console.log(await getAllPlanets());
+allPlanets.forEach(planet => {
+  createButton(planet.name);
+});
