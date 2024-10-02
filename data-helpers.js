@@ -1,5 +1,10 @@
 const allPlanetsEndpoint = 'https://swapi.dev/api/planets';
 
+export const getPlanet = (planetName, allPlanets) => {
+  return allPlanets.find(p => p.name.toLowerCase()
+    .includes(planetName.toLowerCase()));
+}
+
 export const getAllPlanets = async () => {
   let cachedPlanets = getCachedData('planets');
 
