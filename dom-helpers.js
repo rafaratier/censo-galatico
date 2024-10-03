@@ -18,3 +18,17 @@ export const showPlanetData = (planetData, parentElement) => {
     elem.textContent = `${infoName}: ${planetData[infoName]}`;
   };
 };
+
+export const showResidentsData = (residents, parentElement) => {
+  const tbodyElem = parentElement.getElementsByTagName('tbody')[0];
+
+  tbodyElem.innerHTML = '';
+
+  residents.forEach(resident => {
+    const newRow = tbodyElem.insertRow();
+    const nameCell = newRow.insertCell();
+    const birthCell = newRow.insertCell();
+    nameCell.textContent = resident.name;
+    birthCell.textContent = resident.birth_year;
+  });
+};

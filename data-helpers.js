@@ -5,6 +5,14 @@ export const getPlanet = (planetName, allPlanets) => {
     .includes(planetName.toLowerCase()));
 }
 
+export async function getResidents(residents) {
+  const allResidents = await Promise.all(
+    residents.map(async residentURL => {
+      return await fetchData(residentURL);
+    }));
+  return allResidents;
+}
+
 export const getAllPlanets = async () => {
   let cachedPlanets = getCachedData('planets');
 
