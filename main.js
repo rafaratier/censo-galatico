@@ -7,16 +7,19 @@ const searchElem = document.getElementById('search-input');
 
 const btnContainer = document.getElementById('planets-btn-container');
 
-const planetCardElem = document.getElementById('planet-info-card');
+const planetCardElem = document.getElementById('planet-card');
 
 const residentsTableElem = document.getElementById('residents-info-table');
 
 createPlanetsButtons(allPlanets, btnContainer);
 
-document.addEventListener('click', ({ target }) => {
+document.addEventListener('click', async ({ target }) => {
   if (target.className == 'planet-btn') {
     const selectedPlanet = getPlanet(target.id, allPlanets);
+    const residents = await getResidents(selectedPlanet.residents);
+
     showPlanetData(selectedPlanet, planetCardElem);
+    showResidentsData(residents, residentsTableElem);
   };
 });
 

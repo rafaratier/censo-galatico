@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
   <script defer type="module" src="/main.js"></script>
   <title>Censo Galático</title>
 </head>
@@ -11,23 +12,26 @@
 <body>
   <h1>Censo Galático</h1>
 
-  <input type="text" id="search-input">
+  <input type="text" id="search-input" class="search-input" placeholder="search for a planet">
 
-  <div id="planets-btn-container"></div>
-  <div id="planet-info-card">
-    <p id="planet-name"></p>
-    <p id="planet-climate"></p>
-    <p id="planet-terrain"></p>
-    <p id="planet-population"></p>
+  <div id="planets-btn-container" class="btn-container"></div>
+  <div class="planet-info-container">
+
+    <div id="planet-card" class="planet-card">
+      <p id="planet-name"></p>
+      <p id="planet-climate"></p>
+      <p id="planet-terrain"></p>
+      <p id="planet-population"></p>
+    </div>
+
+    <table id="residents-info-table" class="residents-info-table">
+      <thead>
+        <th>Residents</th>
+        <th>Birth Year</th>
+      </thead>
+      <tbody></tbody>
+    </table>
   </div>
-
-  <table id="residents-info-table">
-    <thead>
-      <th>Residents</th>
-      <th>Birth Year</th>
-    </thead>
-    <tbody></tbody>
-  </table>
 
 </body>
 

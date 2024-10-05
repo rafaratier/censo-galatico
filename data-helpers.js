@@ -47,6 +47,8 @@ const fetchAndCachePlanets = async () => {
     url = data.next;
   }
 
+  allPlanets = allPlanets.filter(p => p.name != 'unknown');
+
   cacheData('planets', allPlanets);
 
   return allPlanets;
